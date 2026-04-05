@@ -15,7 +15,8 @@ export const AppProvider = ({ children }) => {
   });
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem('money-nest-dark-mode') === 'true';
+    const saved = localStorage.getItem('money-nest-dark-mode');
+    return saved !== null ? saved === 'true' : true;
   });
 
   const [currency, setCurrency] = useState(() => {

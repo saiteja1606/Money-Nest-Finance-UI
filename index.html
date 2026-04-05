@@ -10,7 +10,8 @@
   <title>Money Nest | Premium Finance Dashboard</title>
   <script>
     (function () {
-      const isDark = localStorage.getItem('money-nest-dark-mode') === 'true';
+      const saved = localStorage.getItem('money-nest-dark-mode');
+      const isDark = saved !== null ? saved === 'true' : true;
       if (isDark) document.documentElement.classList.add('dark');
     })();
   </script>
