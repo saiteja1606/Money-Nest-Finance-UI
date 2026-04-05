@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: hsl(221, 83%, 53%);
+  --color-secondary: hsl(262, 83%, 58%);
+  --color-accent: hsl(199, 89%, 48%);
+  
+  --color-income: hsl(142, 71%, 45%);
+  --color-expense: hsl(0, 84%, 60%);
+
+  /* Global Theme Mapping */
+  --color-bg-theme: var(--color-bg);
+  --color-text-theme: var(--color-text-base);
+  --color-muted-theme: var(--color-text-muted);
+  --color-border-theme: var(--color-card-border);
+  --color-card-theme: var(--color-card-bg);
+  --color-sidebar-theme: var(--color-sidebar-bg);
+  --color-header-theme: var(--color-header-bg);
+
+  /* Elevation Tokens */
+  --shadow-premium: var(--shadow-premium-val);
+  --shadow-glow: 0 0 15px -3px var(--color-glow);
+}
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-bg: #f1f5f9; /* Sophisticated Premium Slate-100 */
+  --color-text-base: #0f172a; /* Deep Slate 900 for sharp hierarchy */
+  --color-text-muted: #475569; /* Slate 600 for better sub-text contrast */
+  --color-card-bg: #ffffff; /* Solid white card pop */
+  --color-card-border: rgba(15, 23, 42, 0.05); /* Ultra-subtle border */
+  --color-sidebar-bg: #ffffff;
+  --color-header-bg: rgba(255, 255, 255, 0.92);
+  --color-glow: rgba(59, 130, 246, 0.12);
+  --shadow-premium-val: 
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(15, 23, 42, 0.04);
+}
+
+.dark {
+  --color-bg: #020617;
+  --color-text-base: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-card-bg: rgba(15, 23, 42, 0.7);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-sidebar-bg: #0f172a;
+  --color-header-bg: rgba(15, 23, 42, 0.8);
+  --color-glow: rgba(59, 130, 246, 0.2);
+  --shadow-premium-val: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-base);
+    font-family: var(--font-sans);
+    @apply transition-[background-color] duration-200 overflow-x-hidden antialiased selection:bg-primary/20 selection:text-primary;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.03) 0px, transparent 50%);
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%);
+  }
+
+  * {
+    @apply transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out;
+  }
+
+  html {
+    @apply text-[14px] sm:text-[16px] scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    @apply backdrop-blur-md shadow-premium rounded-[2rem] overflow-hidden transition-[box-shadow,transform,border-color];
+  }
+
+  .glass-card:hover {
+    @apply shadow-glow border-primary/20;
+  }
+
+  .header-bg {
+    background-color: var(--color-header-bg);
+    border-bottom: 1px solid var(--color-card-border);
+    @apply backdrop-blur-md sticky top-0 z-50;
+  }
+
+  .premium-gradient-primary {
+    background: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(262, 83%, 58%) 100%);
+  }
+
+  .premium-gradient-success {
+    background: linear-gradient(135deg, hsl(142, 71%, 45%) 0%, hsl(142, 71%, 35%) 100%);
+  }
+
+  .premium-gradient-danger {
+    background: linear-gradient(135deg, hsl(0, 84%, 60%) 0%, hsl(0, 84%, 50%) 100%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-card-border);
+  border: 2px solid var(--color-bg);
+  @apply rounded-full hover:bg-muted-theme/50 transition-colors;
+}

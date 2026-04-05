@@ -1,0 +1,43 @@
+import React from 'react';
+import { Eye, ShieldCheck } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+const cn = (...inputs) => twMerge(clsx(inputs));
+
+export const RoleSwitcher = ({ className }) => {
+  const { role, setRole } = useAppContext();
+
+  return (
+    <div className={cn(
+      "flex items-center bg-slate-100/50 dark:bg-slate-800/50 p-1 rounded-xl backdrop-blur-sm border border-border-theme",
+      className
+    )}>
+      <button
+        onClick={() => setRole('viewer')}
+        className={cn(
+          "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
+          role === 'viewer'
+            ? "bg-white dark:bg-slate-700 text-text-theme shadow-premium"
+            : "text-muted-theme hover:text-slate-600 dark:hover:text-slate-300"
+        )}
+      >
+        <Eye size={12} />
+        <span className="hidden xs:inline">Viewer</span>
+      </button>
+      <button
+        onClick={() => setRole('admin')}
+        className={cn(
+          "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
+          role === 'admin'
+            ? "bg-white dark:bg-slate-700 text-text-theme shadow-premium"
+            : "text-muted-theme hover:text-slate-600 dark:hover:text-slate-300"
+        )}
+      >
+        <ShieldCheck size={12} />
+        <span className="hidden xs:inline">Admin</span>
+      </button>
+    </div>
+  );
+};
