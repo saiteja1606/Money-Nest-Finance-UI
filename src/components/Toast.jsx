@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, AlertCircle, Info, X } from 'lucide-react';
+import { CheckCircle, AlertCircle, Info, X, ShieldCheck, Eye } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -33,19 +33,31 @@ export const Toast = ({ message, type = 'success', isVisible, onClose }) => {
         >
           <div className={cn(
             "glass-card p-5 flex items-center gap-4 relative overflow-hidden group",
-            type === 'success' ? "border-income/20 shadow-income/5" : "border-expense/20 shadow-expense/5"
+            type === 'success' ? "border-income/20 shadow-income/5" : 
+            type === 'admin' ? "border-primary/20 shadow-primary/5" :
+            type === 'viewer' ? "border-warning/20 shadow-warning/5" : 
+            "border-expense/20 shadow-expense/5"
           )}>
             {/* Animated Status Glow */}
             <div className={cn(
               "absolute -left-12 -top-12 w-24 h-24 rounded-full opacity-10 blur-2xl animate-pulse",
-              type === 'success' ? "bg-income" : "bg-expense"
+              type === 'success' ? "bg-income" : 
+              type === 'admin' ? "bg-primary" :
+              type === 'viewer' ? "bg-warning" : 
+              "bg-expense"
             )} />
 
             <div className={cn(
               "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg transition-transform group-hover:scale-110 duration-500",
-              type === 'success' ? "premium-gradient-success text-white" : "premium-gradient-danger text-white"
+              type === 'success' ? "premium-gradient-success text-white" : 
+              type === 'admin' ? "premium-gradient-primary text-white" :
+              type === 'viewer' ? "bg-warning text-slate-900" : 
+              "premium-gradient-danger text-white"
             )}>
-              {type === 'success' ? <CheckCircle size={24} /> : type === 'error' ? <AlertCircle size={24} /> : <Info size={24} />}
+              {type === 'success' ? <CheckCircle size={24} /> : 
+               type === 'admin' ? <ShieldCheck size={24} /> :
+               type === 'viewer' ? <Eye size={24} /> :
+               type === 'error' ? <AlertCircle size={24} /> : <Info size={24} />}
             </div>
             
             <div className="flex-1 pr-6 relative z-10">
@@ -71,7 +83,10 @@ export const Toast = ({ message, type = 'success', isVisible, onClose }) => {
               transition={{ duration: 3, ease: "linear" }}
               className={cn(
                 "absolute bottom-0 left-0 right-0 h-1 origin-left z-10",
-                type === 'success' ? "bg-income" : "bg-expense"
+                type === 'success' ? "bg-income" : 
+                type === 'admin' ? "bg-primary" :
+                type === 'viewer' ? "bg-warning" : 
+                "bg-expense"
               )}
             />
           </div>
