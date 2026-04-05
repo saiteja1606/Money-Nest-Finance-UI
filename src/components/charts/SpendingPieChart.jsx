@@ -65,8 +65,8 @@ export const SpendingPieChart = () => {
 
   return (
     <div className="w-full h-full min-h-[300px] relative group/pie">
-      <ResponsiveContainer width="100%" height="100%" key={key}>
-        <PieChart>
+      <ResponsiveContainer width="100%" height="100%" key={key} className="focus:outline-none">
+        <PieChart style={{ outline: 'none' }}>
           <Pie
             data={data}
             cx="50%"

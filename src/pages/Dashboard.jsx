@@ -104,14 +104,14 @@ const Dashboard = () => {
             <motion.h1 variants={item} className="text-3xl sm:text-4xl font-black text-text-theme tracking-tighter leading-none">
               Financial <span className="text-primary italic">Overview</span>
             </motion.h1>
-            <div className="flex items-center gap-3 mt-2">
-              <motion.p variants={item} className="text-muted-theme text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2 opacity-80">
-                <Sparkles size={14} className="text-primary animate-pulse" />
-                Real-time Transactions • {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-3 sm:mt-2">
+              <motion.p variants={item} className="text-muted-theme text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] flex items-center gap-2 opacity-80">
+                <Sparkles size={14} className="text-primary animate-pulse shrink-0" />
+                <span className="leading-relaxed">Real-time Transactions • {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
               </motion.p>
-              <div className="h-4 w-[1px] bg-border-theme opacity-30" />
+              <div className="hidden sm:block h-4 w-[1px] bg-border-theme opacity-30" />
               <div className="flex items-center gap-1.5">
-                 <div className="w-1.5 h-1.5 rounded-full bg-income animate-pulse shadow-[0_0_8px_var(--color-income)]" />
+                 <div className="w-1.5 h-1.5 rounded-full bg-income animate-pulse shadow-[0_0_8px_var(--color-income)] shrink-0" />
                  <span className="text-[8px] font-black uppercase tracking-widest text-income opacity-80">Live Account</span>
               </div>
             </div>

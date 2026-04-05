@@ -10,6 +10,7 @@ import {
   X
 } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import { CurrencySwitcher } from './CurrencySwitcher';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -32,13 +33,13 @@ export const Sidebar = ({ isOpen, onClose }) => {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[60] lg:hidden"
           onClick={onClose}
         />
       )}
 
       <aside className={cn(
-        "fixed left-0 top-0 h-screen w-64 bg-sidebar-theme z-50 transition-[transform,background-color] duration-200 ease-in-out flex flex-col border-r border-border-theme shadow-lg",
+        "fixed left-0 top-0 h-screen w-64 bg-sidebar-theme z-[70] transition-[transform,background-color] duration-200 ease-in-out flex flex-col border-r border-border-theme shadow-lg",
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         <div className="p-8 flex items-center justify-between">
@@ -91,6 +92,9 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </nav>
 
         <div className="p-6 mt-auto border-t border-border-theme space-y-5">
+          <div className="sm:hidden flex justify-center w-full mb-2">
+            <CurrencySwitcher />
+          </div>
           <div className="flex items-center gap-4 px-2 py-4 rounded-[1.5rem] bg-slate-50/50 dark:bg-white/[0.02] border border-border-theme/50 relative group/profile cursor-pointer hover:border-primary/20 transition-all">
             <div className="relative shrink-0">
               <div className="w-11 h-11 rounded-2xl bg-linear-to-tr from-primary to-secondary flex items-center justify-center text-white text-base font-black shadow-lg relative overflow-hidden group-hover/profile:rotate-3 transition-transform">

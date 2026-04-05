@@ -85,7 +85,7 @@ export const VirtualCard = () => {
 
         {/* Back Side */}
         <div
-          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-premium p-6 flex flex-col justify-between ${isFlipped ? "pointer-events-auto" : "pointer-events-none"}`}
+          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-premium p-5 sm:p-6 flex flex-col justify-between ${isFlipped ? "pointer-events-auto" : "pointer-events-none"}`}
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
@@ -96,11 +96,22 @@ export const VirtualCard = () => {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-5 mix-blend-overlay" />
 
           {/* Magnetic Stripe */}
-          <div className="absolute top-8 left-0 w-full h-12 bg-linear-to-b from-black via-slate-900 to-black shadow-lg border-y border-white/5 relative">
+          <div className="absolute top-6 sm:top-8 left-0 w-full h-10 sm:h-12 bg-linear-to-b from-black via-slate-900 to-black shadow-lg border-y border-white/5 relative">
             <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(0deg,transparent,transparent_1px,rgba(255,255,255,0.1)_1px,rgba(255,255,255,0.1)_2px)]" />
           </div>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsFlipped(false);
+            }}
+            className="absolute top-2 right-4 sm:top-3 sm:right-6 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all active:scale-95 text-white/60 hover:text-white border border-white/20 shadow-xl flex items-center justify-center cursor-pointer"
+            aria-label="Show card front"
+          >
+            <EyeOff size={16} />
+          </button>
 
-          <div className="mt-14 space-y-6 relative z-10">
+          <div className="mt-10 sm:mt-12 space-y-4 sm:space-y-5 relative z-10">
             {/* Signature Panel */}
             <div className="space-y-2">
               <div className="flex justify-between items-end px-1">
@@ -119,36 +130,22 @@ export const VirtualCard = () => {
             </div>
 
             {/* Card Information */}
-            <div className="grid grid-cols-2 gap-8">
-              <div className="space-y-1.5">
+            <div className="flex justify-between items-center gap-2">
+              <div className="space-y-0.5 sm:space-y-1.5 overflow-hidden">
                 <p className="text-white/20 text-[7px] font-black uppercase tracking-[0.3em]">Card Number</p>
-                <p className="text-white text-sm font-mono tracking-[0.2em] font-black drop-shadow-md">
+                <p className="text-white text-[11px] sm:text-sm font-mono tracking-widest sm:tracking-[0.2em] font-black drop-shadow-md whitespace-nowrap">
                   {cardData.number}
                 </p>
               </div>
-              <div className="flex justify-end gap-10">
-                <div className="space-y-1.5 text-right">
-                  <p className="text-white/20 text-[7px] font-black uppercase tracking-[0.3em]">Expiry</p>
-                  <p className="text-white font-mono font-black text-[11px] tracking-widest">{cardData.expiry}</p>
-                </div>
-                <div className="flex flex-col items-end gap-1">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsFlipped(false);
-                    }}
-                    className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 transition-all active:scale-95 text-white/40 hover:text-white border border-white/10 shadow-lg"
-                    aria-label="Show card front"
-                  >
-                    <EyeOff size={16} />
-                  </button>
-                </div>
+              <div className="space-y-0.5 sm:space-y-1.5 text-right shrink-0">
+                <p className="text-white/20 text-[7px] font-black uppercase tracking-[0.3em]">Expiry</p>
+                <p className="text-white font-mono font-black text-[11px] sm:text-xs tracking-widest">{cardData.expiry}</p>
               </div>
             </div>
           </div>
 
           {/* Micro-text & Logos */}
-          <div className="relative z-10 flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5 backdrop-blur-sm mt-auto">
+          <div className="relative z-10 flex justify-between items-center bg-white/5 p-3 sm:p-4 rounded-2xl border border-white/5 backdrop-blur-sm mt-auto">
             <div className="max-w-[180px]">
               <p className="text-[6px] text-white/20 font-medium leading-relaxed tracking-tight">
                 Issued by Money Nest Reserve. This card is property of the issuer and must be returned upon request. Use of this card is subject to the terms and conditions of the Elite Membership Agreement.

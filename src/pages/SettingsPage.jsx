@@ -84,7 +84,7 @@ const SettingsPage = () => {
         </header>
 
         {/* Modern Segmented Control Navigation */}
-        <nav className="hidden sm:flex sticky top-24 z-40 mb-12 glass-card p-1.5 rounded-[2rem] border-white/5 items-center gap-1.5 shadow-lg backdrop-blur-md overflow-hidden">
+        <nav className="flex overflow-x-auto sticky top-24 z-40 mb-12 glass-card p-1.5 rounded-[2rem] border-white/5 items-center gap-1.5 shadow-lg backdrop-blur-md">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -104,7 +104,7 @@ const SettingsPage = () => {
         <div className="space-y-10">
 
           {/* Profile Section */}
-          <motion.section id="profile" variants={item} className="p-0 sm:p-10 glass-card sm:rounded-[2.5rem] border-white/5 space-y-10 scroll-mt-32 relative overflow-hidden group/section">
+          <motion.section id="profile" variants={item} className="p-6 sm:p-10 glass-card rounded-[2.25rem] sm:rounded-[2.5rem] border-white/5 space-y-10 scroll-mt-32 relative overflow-hidden group/section">
             <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-bl-full -mr-24 -mt-24 blur-3xl group-hover/section:bg-primary/10 transition-colors duration-200" />
 
             <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left relative z-10">
@@ -147,7 +147,7 @@ const SettingsPage = () => {
           </motion.section>
 
           {/* Appearance Section */}
-          <motion.section id="appearance" variants={item} className="p-0 sm:p-10 glass-card sm:rounded-[2.5rem] border-white/5 space-y-10 scroll-mt-32">
+          <motion.section id="appearance" variants={item} className="p-6 sm:p-10 glass-card rounded-[2.25rem] sm:rounded-[2.5rem] border-white/5 space-y-10 scroll-mt-32">
             <div className="flex items-center gap-5">
               <div className="w-14 h-14 rounded-[1.5rem] bg-primary/10 flex items-center justify-center text-primary shadow-inner">
                 <Palette size={26} strokeWidth={2.5} />
@@ -192,7 +192,7 @@ const SettingsPage = () => {
           {/* Access Control & Data Integration */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch font-inter">
              {/* Role Switcher */}
-             <motion.section id="access" variants={item} className="p-8 sm:p-10 glass-card sm:rounded-[2.5rem] border-white/5 space-y-8 scroll-mt-32">
+             <motion.section id="access" variants={item} className="p-6 sm:p-10 glass-card rounded-[2.25rem] sm:rounded-[2.5rem] border-white/5 space-y-8 scroll-mt-32">
                 <div className="space-y-1">
                   <h3 className="text-2xl font-black text-text-theme tracking-tighter">Access Control</h3>
                   <p className="text-[10px] text-muted-theme font-black uppercase tracking-[0.2em] opacity-50">Permissions and roles</p>
@@ -233,7 +233,7 @@ const SettingsPage = () => {
              </motion.section>
 
              {/* Data Integrity */}
-             <motion.section id="data" variants={item} className="p-8 sm:p-10 glass-card sm:rounded-[2.5rem] border-white/5 space-y-8 scroll-mt-32">
+             <motion.section id="data" variants={item} className="p-6 sm:p-10 glass-card rounded-[2.25rem] sm:rounded-[2.5rem] border-white/5 space-y-8 scroll-mt-32">
                 <div className="space-y-1">
                   <h3 className="text-2xl font-black text-text-theme tracking-tighter">Data Management</h3>
                   <p className="text-[10px] text-muted-theme font-black uppercase tracking-[0.2em] opacity-50">Export or delete your data</p>
@@ -268,7 +268,7 @@ const SettingsPage = () => {
           </div>
 
           {/* Notifications Placeholder */}
-          <motion.section id="notifications" variants={item} className="glass-card p-10 rounded-3xl text-center space-y-3 scroll-mt-32">
+          <motion.section id="notifications" variants={item} className="glass-card p-6 sm:p-10 rounded-[2.25rem] sm:rounded-[2.5rem] text-center space-y-3 scroll-mt-32">
             <div className="w-16 h-16 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <Bell size={32} className="animate-bounce" />
             </div>

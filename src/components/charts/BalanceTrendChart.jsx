@@ -51,8 +51,8 @@ export const BalanceTrendChart = ({ range = 'monthly' }) => {
 
   return (
     <div className="w-full h-full min-h-[250px] relative group/chart">
-      <ResponsiveContainer width="100%" height="100%" key={`${range}-${key}`}>
-        <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+      <ResponsiveContainer width="100%" height="100%" key={`${range}-${key}`} className="focus:outline-none">
+        <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} style={{ outline: 'none' }}>
           <defs>
             <linearGradient id="colorIncome" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="hsl(142, 71%, 45%)" stopOpacity={0.15}/>
