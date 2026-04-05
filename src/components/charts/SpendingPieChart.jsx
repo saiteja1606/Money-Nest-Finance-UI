@@ -11,19 +11,6 @@ import { useAppContext } from '../../context/AppContext';
 import { categories } from '../../data/mockData';
 import { formatCurrency } from '../../utils/helpers';
 
-const CustomTooltip = ({ active, payload, currency, exchangeRates }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 min-w-[140px] animate-in fade-in zoom-in-95 duration-200">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/50 mb-2">{payload[0].name}</p>
-        <p className="font-mono text-sm font-black text-slate-900 dark:text-white tabular-nums">
-          {formatCurrency(payload[0].value * exchangeRates[currency], currency)}
-        </p>
-      </div>
-    );
-  }
-  return null;
-};
 
 export const SpendingPieChart = () => {
   const { transactions, currency, exchangeRates } = useAppContext();
@@ -108,7 +95,6 @@ export const SpendingPieChart = () => {
               />
             ))}
           </Pie>
-          <Tooltip content={<CustomTooltip currency={currency} exchangeRates={exchangeRates} />} />
         </PieChart>
       </ResponsiveContainer>
       

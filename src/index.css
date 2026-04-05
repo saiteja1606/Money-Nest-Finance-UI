@@ -10,6 +10,7 @@
   
   --color-income: hsl(142, 71%, 45%);
   --color-expense: hsl(0, 84%, 60%);
+  --color-warning: hsl(38, 92%, 50%);
 
   /* Global Theme Mapping */
   --color-bg-theme: var(--color-bg);
