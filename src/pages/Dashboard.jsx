@@ -104,20 +104,23 @@ const Dashboard = () => {
             <motion.h1 variants={item} className="text-3xl sm:text-4xl font-black text-text-theme tracking-tighter leading-none">
               Financial <span className="text-primary italic">Overview</span>
             </motion.h1>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-3 sm:mt-2">
-              <motion.p variants={item} className="text-muted-theme text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] flex items-center gap-2 opacity-80">
-                <Sparkles size={14} className="text-primary animate-pulse shrink-0" />
-                <span className="leading-relaxed">Real-time Transactions • {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+            <div className="flex items-center gap-3 mt-1.5 sm:mt-2">
+              <motion.p variants={item} className="text-muted-theme text-[9px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] flex items-center gap-1.5 sm:gap-2 opacity-80">
+                <Sparkles className="text-primary animate-pulse shrink-0 w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                <span className="leading-relaxed whitespace-nowrap">
+                  <span className="hidden sm:inline">Real-time Transactions • </span>
+                  {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </span>
               </motion.p>
               <div className="hidden sm:block h-4 w-[1px] bg-border-theme opacity-30" />
-              <div className="flex items-center gap-1.5">
+              <div className="hidden sm:flex items-center gap-1.5">
                  <div className="w-1.5 h-1.5 rounded-full bg-income animate-pulse shadow-[0_0_8px_var(--color-income)] shrink-0" />
                  <span className="text-[8px] font-black uppercase tracking-widest text-income opacity-80">Live Account</span>
               </div>
             </div>
           </div>
           
-          <motion.div variants={item} className="flex items-center gap-4">
+          <motion.div variants={item} className="hidden sm:flex items-center gap-4">
              <div className="flex -space-x-3 pr-2">
                 {[1,2,3].map(i => (
                   <div key={i} className="w-9 h-9 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-black overflow-hidden shadow-md group cursor-pointer hover:z-30 transition-transform duration-200">
@@ -129,7 +132,7 @@ const Dashboard = () => {
                 </div>
              </div>
              <div className="h-10 w-[1px] bg-border-theme opacity-30 mx-1" />
-             <div className="text-right hidden sm:block">
+             <div className="text-right">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-text-theme leading-none">Account Synced</p>
                 <p className="text-[8px] font-bold text-muted-theme mt-1 opacity-40">Stable Connection</p>
              </div>
@@ -137,7 +140,7 @@ const Dashboard = () => {
         </div>
 
         {/* Level 1: Core Assets */}
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch pt-2 sm:pt-0">
           <motion.div variants={item} className="xl:col-span-4 flex justify-start">
             <div className="w-full max-w-sm">
               <VirtualCard />
