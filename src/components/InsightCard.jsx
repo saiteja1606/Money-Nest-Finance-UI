@@ -8,35 +8,28 @@ const cn = (...inputs) => twMerge(clsx(inputs));
 
 export const InsightCard = ({ title, description, details, type = 'info', icon: Icon = Lightbulb }) => {
   const [showDetails, setShowDetails] = React.useState(false);
-  const getStyles = () => {
-    switch (type) {
-      case 'success': return 'border-income/30 bg-income/5 text-income shadow-income/5';
-      case 'warning': return 'border-warning/30 bg-warning/5 text-warning shadow-warning/5 overflow-hidden';
-      default: return 'border-primary/30 bg-primary/5 text-primary shadow-blue-500/5';
-    }
-  };
+  const accentColor = type === 'success' ? 'text-income' : type === 'warning' ? 'text-warning' : 'text-primary';
+  const iconBg = type === 'success' ? 'bg-income/10' : type === 'warning' ? 'bg-warning/10' : 'bg-primary/10';
 
   return (
     <div className={cn(
-      "p-6 rounded-[2rem] border flex flex-col gap-5 transition-all duration-500 hover:shadow-glow glass-card group",
-      getStyles()
+      "p-5 sm:p-6 rounded-2xl sm:rounded-[2rem] border border-border-theme/30 sm:border-border-theme/50 bg-white dark:bg-slate-900/60 shadow-xs sm:shadow-sm flex flex-col gap-4 sm:gap-5 transition-all duration-500 hover:shadow-md group relative overflow-hidden",
+      "text-text-theme"
     )}>
       <div className="flex flex-col gap-5">
-        <div className="flex items-start gap-5">
+        <div className="flex items-start gap-4 sm:gap-5">
           <div className={cn(
-            "p-3.5 rounded-2xl bg-card-theme shadow-inner shrink-0 border border-border-theme transition-transform group-hover:-rotate-3 duration-500",
-            "bg-linear-to-b from-white to-slate-50/50 dark:from-slate-800 dark:to-slate-900"
+            "p-3 rounded-xl sm:rounded-2xl shrink-0 transition-transform group-hover:-rotate-3 duration-500 flex items-center justify-center",
+            iconBg, accentColor
           )}>
-            <Icon size={22} className="group-hover:scale-110 transition-transform" />
+            <Icon size={20} className="group-hover:scale-110 transition-transform" />
           </div>
-          <div className="flex-1">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] mb-1.5 opacity-60 flex items-center gap-2">
-              <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse", 
-                type === 'success' ? 'bg-income' : type === 'warning' ? 'bg-warning' : 'bg-primary'
-              )} />
+          <div className="flex-1 pt-0.5">
+            <h4 className={cn("text-[8px] sm:text-[10px] font-black uppercase tracking-widest sm:tracking-[0.25em] mb-1 flex items-center gap-2", accentColor)}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-current opacity-80" />
               {title}
             </h4>
-            <p className="text-[15px] leading-snug font-bold tracking-tight text-text-theme">
+            <p className="text-sm sm:text-[15px] leading-snug font-bold tracking-tight text-text-theme">
               {description}
             </p>
           </div>
@@ -69,14 +62,15 @@ export const InsightCard = ({ title, description, details, type = 'info', icon: 
           )}
         </AnimatePresence>
 
-        <button 
+        <button
           onClick={() => setShowDetails(!showDetails)}
-          className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-inherit hover:opacity-100 opacity-70 transition-all cursor-pointer self-end group/btn"
+          className={cn(
+            "flex items-center gap-1.5 text-[10px] sm:text-xs font-bold tracking-wide hover:opacity-100 opacity-80 transition-all cursor-pointer self-end bg-current/5 hover:bg-current/10 px-3.5 py-1.5 rounded-full group/btn",
+            accentColor
+          )}
         >
-          {showDetails ? 'Minimize' : 'View Details'}
-          <div className="p-1 px-2 rounded-full bg-current/10 group-hover/btn:bg-current/20 transition-colors">
-            <ArrowRight size={10} className={cn("transition-transform duration-500", showDetails && "-rotate-90")} />
-          </div>
+          <span>{showDetails ? 'Close details' : 'Explore'}</span>
+          <ArrowRight size={14} className={cn("transition-transform duration-500 group-hover/btn:translate-x-0.5", showDetails && "-rotate-90 group-hover/btn:translate-x-0 group-hover/btn:-translate-y-0.5")} />
         </button>
       </div>
     </div>

@@ -14,14 +14,14 @@ export const Header = ({ onOpenSidebar }) => {
   return (
     <header className="header-bg shrink-0">
       <div className="flex h-16 items-center justify-between px-4 sm:px-8">
-        <div className="flex items-center gap-4 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <button
             onClick={onOpenSidebar}
             className="p-2 text-muted-theme hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer transition-all active:scale-95"
           >
             <Menu size={20} />
           </button>
-          <span className="font-extrabold text-text-theme uppercase tracking-[0.2em] text-[10px] opacity-80 mt-0.5">Money Nest</span>
+          <span className="font-extrabold text-text-theme uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[10px] opacity-80 mt-0.5 whitespace-nowrap">Money Nest</span>
         </div>
 
         <div className="hidden lg:block">
@@ -32,8 +32,8 @@ export const Header = ({ onOpenSidebar }) => {
             </h2>
             <div className={cn(
               "px-3.5 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.25em] border backdrop-blur-md shadow-sm transition-all",
-              role === 'admin' 
-                ? "bg-primary/5 text-primary border-primary/20 shadow-primary/5" 
+              role === 'admin'
+                ? "bg-primary/5 text-primary border-primary/20 shadow-primary/5"
                 : "bg-warning/5 text-warning border-warning/20 shadow-warning/5"
             )}>
               {role === 'admin' ? 'Administrator' : role.charAt(0).toUpperCase() + role.slice(1)}
@@ -44,13 +44,13 @@ export const Header = ({ onOpenSidebar }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center gap-2 sm:gap-5">
           <CurrencySwitcher className="scale-90 hidden sm:flex" />
-          <RoleSwitcher className="scale-90" />
+          <RoleSwitcher className="scale-[0.8] sm:scale-90 origin-right transition-transform" />
 
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2.5 text-muted-theme hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-[background-color,border-color,transform] duration-200 cursor-pointer border border-border-theme dark:border-border-theme/50 shadow-sm bg-white dark:bg-transparent"
+            className="hidden sm:flex p-2.5 text-muted-theme hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 cursor-pointer border border-border-theme dark:border-border-theme/50 shadow-sm bg-white dark:bg-transparent items-center justify-center"
             title="Toggle Theme"
           >
             {isDarkMode ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} />}
@@ -58,7 +58,7 @@ export const Header = ({ onOpenSidebar }) => {
 
           <div className="relative group/user cursor-pointer">
             <div className="w-10 h-10 rounded-2xl bg-linear-to-tr from-primary to-secondary flex items-center justify-center text-white font-black text-xs shadow-xl shadow-primary/20 border-2 border-white dark:border-slate-800 transition-all group-hover:scale-105 group-hover:-rotate-3 translate-y-0 hover:-translate-y-0.5">
-              GS
+              ST
             </div>
             <div className={cn(
               "absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-white dark:border-slate-800 shadow-sm",

@@ -15,7 +15,7 @@ export const CurrencySwitcher = ({ className }) => {
 
   return (
     <div className={cn(
-      "flex items-center bg-slate-100/50 dark:bg-white/5 p-1 rounded-xl backdrop-blur-md border border-border-theme/40",
+      "flex items-center w-max bg-slate-100/50 dark:bg-white/5 p-1 rounded-xl backdrop-blur-md border border-border-theme/40",
       className
     )}>
       {currencies.map((curr) => (
@@ -23,7 +23,7 @@ export const CurrencySwitcher = ({ className }) => {
           key={curr.id}
           onClick={() => setCurrency(curr.id)}
           className={cn(
-            "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-black tracking-[0.1em] transition-all duration-300 cursor-pointer relative",
+            "flex items-center w-max shrink-0 whitespace-nowrap gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] font-black tracking-[0.1em] transition-all duration-300 cursor-pointer relative",
             currency === curr.id
               ? "bg-white dark:bg-slate-700 text-primary shadow-sm ring-1 ring-black/5 dark:ring-white/5"
               : "text-muted-theme hover:text-text-theme"

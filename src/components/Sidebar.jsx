@@ -7,7 +7,9 @@ import {
   Settings, 
   LogOut,
   Wallet,
-  X
+  X,
+  Moon,
+  Sun
 } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { CurrencySwitcher } from './CurrencySwitcher';
@@ -18,7 +20,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const cn = (...inputs) => twMerge(clsx(inputs));
 
 export const Sidebar = ({ isOpen, onClose }) => {
-  const { role } = useAppContext();
+  const { role, isDarkMode, setIsDarkMode } = useAppContext();
   const menuItems = [
     { title: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { title: 'Transactions', icon: ReceiptText, path: '/transactions' },
@@ -92,8 +94,25 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </nav>
 
         <div className="p-6 mt-auto border-t border-border-theme space-y-5">
-          <div className="sm:hidden flex justify-center w-full mb-2">
-            <CurrencySwitcher />
+          <div className="sm:hidden w-full mb-4">
+            <h4 className="text-[10px] uppercase font-black tracking-[0.2em] text-muted-theme opacity-50 mb-3 px-1">Preferences</h4>
+            <div className="bg-slate-50/50 dark:bg-white/[0.02] p-3.5 rounded-[1.25rem] border border-border-theme/50 flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-black text-text-theme opacity-80 uppercase tracking-widest">Currency</span>
+                <CurrencySwitcher className="origin-left" />
+              </div>
+              <div className="h-[1px] w-full bg-border-theme/50" />
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-black text-text-theme opacity-80 uppercase tracking-widest">Theme</span>
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="flex items-center gap-2.5 px-3 py-2 text-muted-theme hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 cursor-pointer border border-border-theme/50 dark:border-border-theme/30 shadow-sm bg-white dark:bg-transparent w-full"
+                >
+                  {isDarkMode ? <Sun size={14} className="text-yellow-400" /> : <Moon size={14} />}
+                  <span className="text-[9px] font-black uppercase tracking-[0.1em] text-text-theme leading-none mt-0.5">{isDarkMode ? 'Dark Mode' : 'Light Mode'}</span>
+                </button>
+              </div>
+            </div>
           </div>
           <div className="flex items-center gap-4 px-2 py-4 rounded-[1.5rem] bg-slate-50/50 dark:bg-white/[0.02] border border-border-theme/50 relative group/profile cursor-pointer hover:border-primary/20 transition-all">
             <div className="relative shrink-0">

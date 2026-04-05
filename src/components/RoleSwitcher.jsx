@@ -32,26 +32,26 @@ export const RoleSwitcher = ({ className }) => {
         <button
           onClick={() => handleRoleSwitch('viewer')}
           className={cn(
-            "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
+            "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
             role === 'viewer'
               ? "bg-white dark:bg-slate-700 text-text-theme shadow-premium"
               : "text-muted-theme hover:text-slate-600 dark:hover:text-slate-300"
           )}
         >
-          <Eye size={12} />
-          <span className="hidden xs:inline">Viewer</span>
+          <Eye size={14} className="opacity-70" />
+          <span>Viewer</span>
         </button>
         <button
           onClick={() => handleRoleSwitch('admin')}
           className={cn(
-            "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
+            "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer",
             role === 'admin'
               ? "bg-white dark:bg-slate-700 text-text-theme shadow-premium"
               : "text-muted-theme hover:text-slate-600 dark:hover:text-slate-300"
           )}
         >
-          <ShieldCheck size={12} />
-          <span className="hidden xs:inline">Admin</span>
+          <ShieldCheck size={14} className="opacity-70" />
+          <span>Admin</span>
         </button>
       </div>
 
